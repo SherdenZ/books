@@ -1,0 +1,17 @@
+#name {
+    display: inline-flex;
+    flex-direction: column;
+    width: 12%;
+}
+
+.description-book {
+    margin-top: 2%;
+}
+
+.book-name {
+    margin-top: 2%;
+}
+
+.load-file {
+    margin-top: 2%;
+}
