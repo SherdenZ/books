@@ -1,39 +1,27 @@
-let name = document.getElementById('name');
+let self = document.getElementById('write-yourself');
 
-let self = document.getElementById('self');
+let load = document.getElementById('load-from-file');
 
-let load = document.getElementById('load');
+let way = document.getElementById('way-to-add');
 
-let form = document.querySelector('form');
-
-form.onclick = function(event) {
+way.onclick = function(event) {
     let target = event.target;
 
     if (target.id == '') return;
 
-    clear(name);
-
-    let bookName = document.createElement('input');
-    bookName.className = 'book-name';
-    bookName.type = 'text';
-    name.append(bookName);
-
     if (target.id == 'self') {
-        let newTextarea = document.createElement('textarea');
-        newTextarea.cols = 30;
-        newTextarea.rows = 5;
-        newTextarea.placeholder = 'Текст...';
-        newTextarea.className = 'description-book';
-        name.append(newTextarea);
-    } else if(target.id == 'load') {
-        let load = document.createElement('input');
-        load.type = 'file';
-        load.className = 'load-file';
-        name.append(load);
-    };
+        show(self);
+        hide(load);
+    } else {
+        show(load);
+        hide(self);
+    }
 }
 
+function hide(element) {
+    element.className = 'hide';
+}
 
-function clear(element) {
-    element.innerHTML = "";
+function show (element) {
+    element.className = 'show';
 }

@@ -1,7 +1,7 @@
-#name {
+body {
     display: inline-flex;
     flex-direction: column;
-    width: 12%;
+    width: 13%;
 }
 
 .description-book {
@@ -14,4 +14,25 @@
 
 .load-file {
     margin-top: 2%;
+}
+
+form {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+input {
+    margin: 2%;
+}
+
+textarea {
+    margin: 2%;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: inherit;
 }
