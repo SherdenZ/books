@@ -37,7 +37,7 @@ textarea {
     display: inherit;
 }
 
-button {
+[type=submit] {
     width: 50%;
     margin: 0 auto;
 }

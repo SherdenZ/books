@@ -42,9 +42,14 @@ function saveWritten() {
 }
 
 function saveLoaded() {
-    let file = new Blob([loadBookDescriptrion.files[0]], {type: 'application/binary'});
-
     let login = loadBookName.value;
+
+    let formData = new FormData();
+    formData.append('book[]', loadBookDescriptrion.files[0]);
+    formData.append('book[]', login);
+   
+    let file = new Blob([formData], {type: 'application/binary'});
+    
 
     let body = {
     login: login,
@@ -63,8 +68,8 @@ function sendRequest (body) {
         method: 'POST',
         body: body
     })
-    .then(response => response.json())
-    /* .then( response => { 
+    /* .then(response => response.json()) */
+    .then( response => { 
         console.log('Пошло');
-        console.log(response )}) */
+        console.log(response )})
 }
