@@ -48,7 +48,7 @@ function saveLoaded() {
     formData.append('book[]', loadBookDescriptrion.files[0]);
     formData.append('book[]', login);
    
-    let file = new Blob([formData], {type: 'application/binary'});
+    let file = new Blob([formData],/*  {type: 'application/binary'} */);
     
 
     let body = {
@@ -57,6 +57,7 @@ function saveLoaded() {
     };
 
     sendRequest(body);
+    event.preventDefault();
 }
 
 
