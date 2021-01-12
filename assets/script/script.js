@@ -45,19 +45,18 @@ function saveLoaded() {
     let login = loadBookName.value;
 
     let formData = new FormData();
-    formData.append('book[]', loadBookDescriptrion.files[0]);
-    formData.append('book[]', login);
+    formData.append('file', loadBookDescriptrion.files[0]); /* в 'для распознавания сервером' */
+    formData.append('login', login);
    
-    let file = new Blob([formData],/*  {type: 'application/binary'} */);
+    /* let file = new Blob([formData], {type: 'application/binary'});  --- отправлять именно FormData, а не blob
     
-
-    let body = {
+    let body = {   ---- не нужно, все данные записал в FormData
     login: login,
     file: file
-    };
+    }; */
 
-    sendRequest(body);
-    event.preventDefault();
+    sendRequest(formData);
+    event.preventDefault(); /* нужна чтоб страница не перезагружалась */
 }
 
 
