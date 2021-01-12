@@ -8,6 +8,13 @@ let loadBookDescriptrion = document.getElementById('load-book-description');
 
 let loadBookName = document.getElementById('load-book-name');
 
+let writeAndSave = document.getElementById('write-and-save');
+writeAndSave.addEventListener('click', saveWritten);
+let loadAndSave = document.getElementById('load-and-save');
+loadAndSave.addEventListener('click', saveLoaded);
+
+const requestUrl = 'https://apiinterns.osora.ru/';
+
 way.onclick = function(event) {
     let target = event.target;
 
@@ -30,21 +37,34 @@ function show (element) {
     element.className = 'show';
 };
 
-let requestUrl = 'https://apiinterns.osora.ru/';
-
-let body = {
-    login: loadBookName.value,
-    file: loadBookDescriptrion.value
+function saveWritten() {
+    alert('written');
 }
 
-function sendRequest (method, url, body = null) {
-    return fetch(url, {
+function saveLoaded() {
+    let file = new Blob([loadBookDescriptrion.files[0]], {type: 'application/binary'});
+
+    let login = loadBookName.value;
+
+    let body = {
+    login: login,
+    file: file
+    };
+
+    sendRequest(body);
+}
+
+
+
+
+function sendRequest (body) {
+    console.log('try')
+    fetch(requestUrl, {
         method: 'POST',
         body: body
-    }).then( response => {
-        return response.text();
     })
+    .then(response => response.json())
+    /* .then( response => { 
+        console.log('Пошло');
+        console.log(response )}) */
 }
-
-/* sendRequest('POST', requestUrl, body)
-    .then(data => console.log(data)); */
